@@ -3,8 +3,14 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-app.get('/', function(req, res){
-    const pathToHtmlFile = path.resolve(__dirname, '../dist/index.html');
+app.get('/button/', function(req, res){
+    const pathToHtmlFile = path.resolve(__dirname, '../dist/button.html');
+    const contentFromHtmlFile = fs.readFileSync(pathToHtmlFile, 'utf-8');
+    res.send(contentFromHtmlFile);
+});
+
+app.get('/logo/', function(req, res){
+    const pathToHtmlFile = path.resolve(__dirname, '../dist/logo.html');
     const contentFromHtmlFile = fs.readFileSync(pathToHtmlFile, 'utf-8');
     res.send(contentFromHtmlFile);
 });
